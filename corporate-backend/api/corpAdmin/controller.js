@@ -15,7 +15,9 @@ module.exports = {
     let building = req.body;
     const item = await Building.create(building);
 
-    img.name = `/uploads/building/photo_${item._id}${path.parse(img.name).ext}`;
+    img.name = `/uploads/corporate/building/photo_${item._id}${
+      path.parse(img.name).ext
+    }`;
     let str = img.name.split("/").pop();
     item.img = img.name;
     img.mv(`${process.env.BUILDING_FILE_UPLOAD_PATH}/${str}`, (err) => {
@@ -58,7 +60,7 @@ module.exports = {
     if (item) {
       if (req.files) {
         const file = req.files.img;
-        file.name = `/uploads/building/photo_${req.params.id}${
+        file.name = `/uploads/corporate/building/photo_${req.params.id}${
           path.parse(file.name).ext
         }`;
         str = item.img.split("/").pop();
@@ -133,7 +135,9 @@ module.exports = {
     let cover = req.body;
     const item = await Cover.create(cover);
 
-    img.name = `/uploads/cover/photo_${item._id}${path.parse(img.name).ext}`;
+    img.name = `/uploads/corporate/cover/photo_${item._id}${
+      path.parse(img.name).ext
+    }`;
     let str = img.name.split("/").pop();
     item.img = img.name;
     img.mv(`${process.env.COVER_FILE_UPLOAD_PATH}/${str}`, (err) => {
@@ -176,7 +180,7 @@ module.exports = {
     if (item) {
       if (req.files) {
         const file = req.files.img;
-        file.name = `/uploads/cover/photo_${req.params.id}${
+        file.name = `/uploads/corporate/cover/photo_${req.params.id}${
           path.parse(file.name).ext
         }`;
         str = item.img.split("/").pop();
@@ -252,7 +256,7 @@ module.exports = {
     };
     const item = await Rooms.create({ images: [{ img: " " }], img: " " });
     for (i = 0; i < files.length; i++) {
-      files[i].name = `/uploads/rooms/photo_${item._id}_${i}${
+      files[i].name = `/uploads/corporate/rooms/photo_${item._id}_${i}${
         path.parse(files[i].name).ext
       }`;
       data.images.push({ img: files[i].name });
@@ -383,7 +387,7 @@ module.exports = {
 
     const item = await Service.create({ images: [{ img: " " }], img: " " });
     for (i = 0; i < files.length; i++) {
-      files[i].name = `/uploads/services/photo_${item._id}_${i}${
+      files[i].name = `/uploads/corporate/services/photo_${item._id}_${i}${
         path.parse(files[i].name).ext
       }`;
       data.images.push({ img: files[i].name });
