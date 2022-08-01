@@ -23,7 +23,7 @@ app.use(
   })
 );
 
-app.use(express.static("./public"));
+app.use(express.static("./public/corp"));
 // access-control-allow-credentials: true
 // access-control-allow-headers: DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization
 // access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS, HEAD
@@ -62,9 +62,9 @@ app.use(bodyParser.text({ type: "*/xml" }));
 app.use(express.static("public"));
 app.use(fileupload());
 // main routes
-app.use("/api/auth", require("./api/auth/router"));
+app.use("/api/corp/auth", require("./api/auth/router"));
 
-app.use("/api", require("./api/corpAdmin/router"));
+app.use("/api/corp", require("./api/corpAdmin/router"));
 // app.use("/api", require("./api/MisheelAdmin/router"));
 app.use("/api/client", require("./api/client/router"));
 
